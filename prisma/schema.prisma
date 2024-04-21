@@ -15,3 +15,19 @@ model Alternatif {
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
 }
+
+model Kriteria {
+  id_kriteria    Int      @id @default(autoincrement())
+  nama_kriteria  String
+  bobot_kriteria Float
+  tipe_kriteria  String
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+}
+
+model Sub_Kriteria {
+  id_sub_kriteria    Int    @id @default(autoincrement())
+  id_kriteria        Int
+  nama_sub_kriteria  String
+  nilai_sub_kriteria Int
+}

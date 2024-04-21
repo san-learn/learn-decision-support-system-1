@@ -14,7 +14,7 @@ export function NavigationLink({
     <>
       <Link
         href={link.href}
-        {...(pathname === link.href && { className: "uppercase" })}
+        {...(pathname.includes(link.href) && { className: "uppercase" })}
       >
         {link.name}
       </Link>

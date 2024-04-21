@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { getAllAlternatif } from "@/actions/alternatif";
-import { DeleteButtonForm } from "@/components/delete-button-form";
+import { AlternatifDeleteButtonForm } from "@/components/delete-button-form";
 
 export default async function DashboardAlternatifPage() {
   const allAlternatif = await getAllAlternatif();
@@ -47,7 +47,9 @@ export default async function DashboardAlternatifPage() {
                       >
                         Edit
                       </Link>
-                      <DeleteButtonForm id={alternatif.id_alternatif} />
+                      <AlternatifDeleteButtonForm
+                        id={alternatif.id_alternatif}
+                      />
                     </div>
                   </td>
                 </tr>
