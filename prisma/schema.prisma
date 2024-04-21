@@ -10,8 +10,8 @@ datasource db {
 model Alternatif {
   id_alternatif   Int      @id @default(autoincrement())
   nama_alternatif String
-  nilai_saw       Float
-  rangking        Int
+  nilai_saw       Float    @default(0)
+  rangking        Int      @default(0)
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
 }
