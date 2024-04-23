@@ -3,13 +3,14 @@ import prisma from "@/libs/database";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function getAllSubKriteria(id: string) {
+export async function getAllSubKriteriaWithId(id: string) {
   "use server";
 
   const id_kriteria = parseInt(id);
 
   return await prisma.sub_Kriteria.findMany({
     where: { id_kriteria: id_kriteria },
+    orderBy: { nilai_sub_kriteria: "asc" },
   });
 }
 

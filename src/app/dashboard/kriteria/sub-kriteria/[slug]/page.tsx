@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getAllSubKriteria } from "@/actions/sub-kriteria";
+import { getAllSubKriteriaWithId } from "@/actions/sub-kriteria";
 import { getKriteria } from "@/actions/kriteria";
 
 import { SubKriteriaDeleteButtonForm } from "@/components/delete-button-form";
@@ -13,7 +13,7 @@ export default async function DashboardKriteriaSubKriteriaPage({
   const id_kriteria = params.slug;
 
   const kriteria = await getKriteria(id_kriteria);
-  const allSubKriteria = await getAllSubKriteria(id_kriteria);
+  const allSubKriteria = await getAllSubKriteriaWithId(id_kriteria);
 
   return (
     <>

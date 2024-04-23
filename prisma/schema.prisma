@@ -31,3 +31,10 @@ model Sub_Kriteria {
   nama_sub_kriteria  String
   nilai_sub_kriteria Int
 }
+
+model Nilai {
+  id_nilai        Int @id @default(autoincrement())
+  id_alternatif   Int
+  id_kriteria     Int
+  id_sub_kriteria Int
+}
