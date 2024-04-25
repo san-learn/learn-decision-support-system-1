@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "@/libs/database";
 
 import { revalidatePath } from "next/cache";
@@ -7,6 +9,41 @@ export async function getAllAlternatif() {
   "use server";
 
   return await prisma.alternatif.findMany();
+}
+
+export async function getAllAlternatifOrderByRangkingAsc() {
+  "use server";
+
+  return await prisma.alternatif.findMany({
+    orderBy: { rangking: "asc" },
+  });
+}
+
+export async function updateAlternatifNilaiSimpleAdditiveWeighting(
+  id_alternatif: number,
+  sigma_nilai_saw: string
+) {
+  await prisma.alternatif.update({
+    where: { id_alternatif: id_alternatif },
+    data: {
+      nilai_saw: parseFloat(sigma_nilai_saw),
+    },
+  });
+}
+
+export async function updateAlternatifRangking() {
+  const nilai_simple_additive_weighting = await prisma.alternatif.findMany({
+    orderBy: { nilai_saw: "desc" },
+  });
+
+  nilai_simple_additive_weighting.forEach(async (alternatif, index) => {
+    await prisma.alternatif.update({
+      where: { id_alternatif: alternatif.id_alternatif },
+      data: {
+        rangking: index + 1,
+      },
+    });
+  });
 }
 
 export async function getAlternatif(id: string) {
@@ -61,10 +98,13 @@ export async function deleteAlternatif(formData: FormData) {
   const id_alternatif = parseInt(formData.get("id-alternatif") as string);
 
   await prisma.alternatif.delete({
-    where: {
-      id_alternatif: id_alternatif,
-    },
+    where: { id_alternatif: id_alternatif },
+  });
+
+  await prisma.nilai.deleteMany({
+    where: { id_alternatif: id_alternatif },
   });
 
   revalidatePath("/dashboard/alternatif");
+  revalidatePath("/dashboard/metode-saw");
 }

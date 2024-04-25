@@ -10,7 +10,7 @@ export async function getAllSubKriteriaWithId(id: string) {
 
   return await prisma.sub_Kriteria.findMany({
     where: { id_kriteria: id_kriteria },
-    orderBy: { nilai_sub_kriteria: "asc" },
+    orderBy: { nilai_sub_kriteria: "desc" },
   });
 }
 

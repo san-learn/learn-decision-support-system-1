@@ -20,8 +20,6 @@ export default async function DashboardAlternatifPage() {
           <tr className="text-left ">
             <th className="border-[1px] border-white p-2.5">No</th>
             <th className="border-[1px] border-white p-2.5">Nama Alternatif</th>
-            <th className="border-[1px] border-white p-2.5">Nilai SAW</th>
-            <th className="border-[1px] border-white p-2.5">Rangking</th>
             <th className="border-[1px] border-white p-2.5">Aksi</th>
           </tr>
         </thead>
@@ -33,12 +31,6 @@ export default async function DashboardAlternatifPage() {
                   <td className="border-[1px] border-white p-2">{index + 1}</td>
                   <td className="border-[1px] border-white p-2">
                     {alternatif.nama_alternatif}
-                  </td>
-                  <td className="border-[1px] border-white p-2">
-                    {alternatif.nilai_saw}
-                  </td>
-                  <td className="border-[1px] border-white p-2">
-                    {alternatif.rangking}
                   </td>
                   <td className="border-[1px] border-white p-2 ">
                     <div className="flex justify-around items-center">

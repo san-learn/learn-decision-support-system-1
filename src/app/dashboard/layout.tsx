@@ -14,12 +14,8 @@ const navLinks = [
     href: "/dashboard/alternatif",
   },
   {
-    name: "Hasil Analisa",
-    href: "/dashboard/hasil-analisa",
-  },
-  {
-    name: "Metode SAW",
-    href: "/dashboard/metode-saw",
+    name: "Hasil Metode SAW",
+    href: "/dashboard/hasil-metode-saw",
   },
   {
     name: "Nilai",
