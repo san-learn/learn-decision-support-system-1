@@ -32,11 +32,11 @@ export async function updateAlternatifNilaiSimpleAdditiveWeighting(
 }
 
 export async function updateAlternatifRangking() {
-  const nilai_simple_additive_weighting = await prisma.alternatif.findMany({
+  const normalisasi_bobot = await prisma.alternatif.findMany({
     orderBy: { nilai_saw: "desc" },
   });
 
-  nilai_simple_additive_weighting.forEach(async (alternatif, index) => {
+  normalisasi_bobot.forEach(async (alternatif, index) => {
     await prisma.alternatif.update({
       where: { id_alternatif: alternatif.id_alternatif },
       data: {
@@ -44,6 +44,8 @@ export async function updateAlternatifRangking() {
       },
     });
   });
+
+  revalidatePath("/dashboard/hasil-metode-saw");
 }
 
 export async function getAlternatif(id: string) {

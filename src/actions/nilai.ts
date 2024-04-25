@@ -9,10 +9,10 @@ export async function getSumNilaiSimpleAdditiveWeighting(
 ) {
   const data = await prisma.nilai.aggregate({
     where: { id_alternatif: { in: [id_alternatif] } },
-    _sum: { nilai_simple_additive_weighting: true },
+    _sum: { normalisasi_bobot: true },
   });
 
-  return data._sum.nilai_simple_additive_weighting?.toFixed(2);
+  return data._sum.normalisasi_bobot?.toFixed(2);
 }
 
 // catatan refactoring: ini bukan nilai saw tetapi nilai normalisasi bobot
@@ -25,8 +25,10 @@ export async function updateNilaiSimpleAdditiveWeighting(
 
   await prisma.nilai.updateMany({
     where: { id_alternatif: id_alternatif, id_kriteria: id_kriteria },
-    data: { nilai_simple_additive_weighting: perkalian_bobot },
+    data: { normalisasi_bobot: perkalian_bobot },
   });
+
+  revalidatePath("/dashboard/hasil-metode-saw");
 }
 
 export async function getNilaiMaxWithIdKriteria(id_kriteria: number) {
@@ -107,9 +109,13 @@ export async function getAllNilaiWithIdKriteria(id: string) {
     return object.id_sub_kriteria;
   });
 
-  return await prisma.sub_Kriteria.findMany({
+  const t = await prisma.sub_Kriteria.findMany({
     where: { id_sub_kriteria: { in: id_sub_kriteria_values } },
   });
+
+  console.log(t);
+
+  return t;
 }
 
 export async function getAllNilaiWithIdAlternatif(id: string) {

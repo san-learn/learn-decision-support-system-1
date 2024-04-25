@@ -6,20 +6,20 @@ const navLinks = [
     href: "/dashboard/home",
   },
   {
-    name: "Kriteria",
-    href: "/dashboard/kriteria",
-  },
-  {
     name: "Alternatif",
     href: "/dashboard/alternatif",
   },
   {
-    name: "Hasil Metode SAW",
-    href: "/dashboard/hasil-metode-saw",
+    name: "Kriteria",
+    href: "/dashboard/kriteria",
   },
   {
     name: "Nilai",
     href: "/dashboard/nilai",
+  },
+  {
+    name: "Hasil Metode SAW",
+    href: "/dashboard/hasil-metode-saw",
   },
 ];
 

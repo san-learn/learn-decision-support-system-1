@@ -69,16 +69,18 @@ export async function deleteKriteria(formData: FormData) {
   const id_kriteria = parseInt(formData.get("id-kriteria") as string);
 
   await prisma.kriteria.delete({
-    where: {
-      id_kriteria: id_kriteria,
-    },
+    where: { id_kriteria: id_kriteria },
   });
 
   await prisma.sub_Kriteria.deleteMany({
-    where: {
-      id_kriteria: id_kriteria,
-    },
+    where: { id_kriteria: id_kriteria },
+  });
+
+  await prisma.nilai.deleteMany({
+    where: { id_kriteria: id_kriteria },
   });
 
   revalidatePath("/dashboard/kriteria");
+  revalidatePath("/dashboard/sub-kriteria");
+  revalidatePath("/dashboard/hasil-metode-saw");
 }

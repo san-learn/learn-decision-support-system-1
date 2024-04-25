@@ -1,6 +1,10 @@
 import { getAllAlternatif } from "@/actions/alternatif";
 import { getAllKriteria } from "@/actions/kriteria";
-import { getAllNilaiWithIdKriteria } from "@/actions/nilai";
+import {
+  getAllNilaiWithIdKriteria,
+  getNilaiMaxWithIdKriteria,
+  getNilaiMinWithIdKriteria,
+} from "@/actions/nilai";
 
 export async function TabelNilaiKeputusan() {
   const allKriteria = await getAllKriteria();
@@ -30,7 +34,9 @@ export async function TabelNilaiKeputusan() {
                 <td className="border-[1px] border-white p-2">
                   {alternatif.nama_alternatif}
                 </td>
-                <TabelData idAlternatif={alternatif.id_alternatif} />
+                <TabelDataNamaSubKriteria
+                  idAlternatif={alternatif.id_alternatif}
+                />
               </tr>
             </>
           );
@@ -40,7 +46,11 @@ export async function TabelNilaiKeputusan() {
   );
 }
 
-async function TabelData({ idAlternatif }: { idAlternatif: number }) {
+async function TabelDataNamaSubKriteria({
+  idAlternatif,
+}: {
+  idAlternatif: number;
+}) {
   const allNilai = await getAllNilaiWithIdKriteria(idAlternatif.toString());
 
   return (
@@ -48,7 +58,7 @@ async function TabelData({ idAlternatif }: { idAlternatif: number }) {
       {allNilai.map((subKriteria, index) => {
         return (
           <td key={index} className="border-[1px] border-white p-2">
-            {subKriteria.nama_sub_kriteria}
+            {subKriteria.nilai_sub_kriteria} - {subKriteria.nama_sub_kriteria}
           </td>
         );
       })}
