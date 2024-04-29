@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "@/libs/database";
 
 import { revalidatePath } from "next/cache";
@@ -21,8 +23,6 @@ export async function updateNilaiSimpleAdditiveWeighting(
   id_alternatif: number,
   perkalian_bobot: number
 ) {
-  "use server";
-
   await prisma.nilai.updateMany({
     where: { id_alternatif: id_alternatif, id_kriteria: id_kriteria },
     data: { normalisasi_bobot: perkalian_bobot },
@@ -32,8 +32,6 @@ export async function updateNilaiSimpleAdditiveWeighting(
 }
 
 export async function getNilaiMaxWithIdKriteria(id_kriteria: number) {
-  "use server";
-
   const id_sub_kriteria = await prisma.nilai.findMany({
     where: { id_kriteria: id_kriteria },
     select: { id_sub_kriteria: true },
@@ -52,8 +50,6 @@ export async function getNilaiMaxWithIdKriteria(id_kriteria: number) {
 }
 
 export async function getNilaiMinWithIdKriteria(id_kriteria: number) {
-  "use server";
-
   const id_sub_kriteria = await prisma.nilai.findMany({
     where: { id_kriteria: id_kriteria },
     select: { id_sub_kriteria: true },
@@ -72,8 +68,6 @@ export async function getNilaiMinWithIdKriteria(id_kriteria: number) {
 }
 
 export async function createNilai(formData: FormData) {
-  "use server";
-
   const id_alternatif = parseInt(formData.get("id-alternatif") as string);
 
   const id_kriteria = await prisma.kriteria.findMany({
@@ -96,8 +90,6 @@ export async function createNilai(formData: FormData) {
 }
 
 export async function getAllNilaiWithIdKriteria(id: string) {
-  "use server";
-
   const id_alternatif = parseInt(id);
 
   const id_sub_kriteria = await prisma.nilai.findMany({
@@ -119,8 +111,6 @@ export async function getAllNilaiWithIdKriteria(id: string) {
 }
 
 export async function getAllNilaiWithIdAlternatif(id: string) {
-  "use server";
-
   const id_alternatif = parseInt(id);
 
   return await prisma.nilai.findMany({
@@ -129,8 +119,6 @@ export async function getAllNilaiWithIdAlternatif(id: string) {
 }
 
 export async function updateNilai(id: string, formData: FormData) {
-  "use server";
-
   const id_alternatif = parseInt(id);
 
   await prisma.nilai.deleteMany({
@@ -157,8 +145,6 @@ export async function updateNilai(id: string, formData: FormData) {
 }
 
 export async function deleteNilai(formData: FormData) {
-  "use server";
-
   const id_alternatif = parseInt(formData.get("id-alternatif") as string);
 
   await prisma.nilai.deleteMany({

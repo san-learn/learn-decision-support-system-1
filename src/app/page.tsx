@@ -1,9 +1,10 @@
-import { SignInForm } from "@/components/sign-in-form";
+import Link from "next/link";
 
 export default function RootPage() {
   return (
     <>
-      <SignInForm />
+      <h1>RootPage</h1>
+      <Link href="/auth/sign-in">Sign In</Link>
     </>
   );
 }

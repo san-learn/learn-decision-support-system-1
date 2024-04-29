@@ -1,11 +1,11 @@
+"use server";
+
 import prisma from "@/libs/database";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function getAllSubKriteriaWithId(id: string) {
-  "use server";
-
   const id_kriteria = parseInt(id);
 
   return await prisma.sub_Kriteria.findMany({
@@ -15,8 +15,6 @@ export async function getAllSubKriteriaWithId(id: string) {
 }
 
 export async function getSubKriteria(id: string) {
-  "use server";
-
   const id_sub_kriteria = parseInt(id);
 
   return await prisma.sub_Kriteria.findUnique({
@@ -29,8 +27,6 @@ export async function updateSubKriteria(
   id: string,
   formData: FormData
 ) {
-  "use server";
-
   const id_sub_kriteria = parseInt(id);
   const namaSubKriteria = formData.get("nama-sub-kriteria") as string;
   const nilaiSubKriteria = formData.get("nilai-sub-kriteria") as string;
@@ -51,8 +47,6 @@ export async function updateSubKriteria(
 }
 
 export async function createSubKriteria(id: string, formData: FormData) {
-  "use server";
-
   const idKriteria = parseInt(id);
   const namaSubKriteria = formData.get("nama-sub-kriteria") as string;
   const nilaiSubKriteria = formData.get("nilai-sub-kriteria") as string;
@@ -71,8 +65,6 @@ export async function createSubKriteria(id: string, formData: FormData) {
 }
 
 export async function deleteSubKriteria(formData: FormData) {
-  "use server";
-
   const id_sub_kriteria = parseInt(formData.get("id-sub-kriteria") as string);
 
   await prisma.sub_Kriteria.delete({
