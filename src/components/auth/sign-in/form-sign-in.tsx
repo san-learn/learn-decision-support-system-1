@@ -1,8 +1,10 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 
 import { authenticate } from "@/actions/user";
+import { FiAlertOctagon } from "react-icons/fi";
+import { ButtonSignIn } from "./button-sign-in";
 
 export function FormSignIn() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -22,7 +24,7 @@ export function FormSignIn() {
             name="username"
             type="text"
             required
-            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
           />
         </div>
       </div>
@@ -41,30 +43,20 @@ export function FormSignIn() {
             name="password"
             type="password"
             required
-            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
           />
         </div>
       </div>
 
       <div>
-        <LoginButton />
+        <ButtonSignIn />
       </div>
       {errorMessage && (
-        <p className="text-sm text-red-500 text-center">{errorMessage}</p>
+        <div className="flex items-center gap-2 justify-center ">
+          <FiAlertOctagon className="text-red-500" />
+          <p className="text-sm text-red-500 text-center">{errorMessage}</p>
+        </div>
       )}
     </form>
-  );
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-      aria-disabled={pending}
-    >
-      Log in
-    </button>
   );
 }

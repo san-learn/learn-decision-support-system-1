@@ -1,8 +1,8 @@
-import { TabelNilaiKeputusan } from "@/components/dashboard/metode-saw/tabel-nilai-keputusan";
-import { TabelNilaiKonversiKeputusan } from "@/components/dashboard/metode-saw/tabel-nilai-konversi-keputusan";
-import { TabelNilaiNormalisasiBobot } from "@/components/dashboard/metode-saw/tabel-nilai-normalisasi-bobot";
-import { TabelNilaiNormalisasiMatrik } from "@/components/dashboard/metode-saw/tabel-nilai-normalisasi-matrik";
-import { TabelNilaiPerangkingan } from "@/components/dashboard/metode-saw/tabel-nilai-perangkingan";
+import { TabelNilaiKeputusan } from "@/components/dashboard/hasil-metode-saw/tabel-nilai-keputusan";
+import { TabelNilaiKonversiKeputusan } from "@/components/dashboard/hasil-metode-saw/tabel-nilai-konversi-keputusan";
+import { TabelNilaiNormalisasiBobot } from "@/components/dashboard/hasil-metode-saw/tabel-nilai-normalisasi-bobot";
+import { TabelNilaiNormalisasiMatrik } from "@/components/dashboard/hasil-metode-saw/tabel-nilai-normalisasi-matrik";
+import { TabelNilaiPerangkingan } from "@/components/dashboard/hasil-metode-saw/tabel-nilai-perangkingan";
 
 export default async function DashboardMetodeSAWPage() {
   return (
