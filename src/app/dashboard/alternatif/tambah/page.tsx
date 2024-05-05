@@ -1,27 +1,11 @@
-import { createAlternatif } from "@/actions/alternatif";
+import { FormTambahAlternatif } from "@/components/dashboard/alternatif/tambah/form-tambah-alternatif";
 
 export default function DashboardAlternatifTambahPage() {
   return (
-    <>
-      <h1 className="mb-8">Tambah Alternatif</h1>
-      <form action={createAlternatif}>
-        <div className="flex gap-4 items-center">
-          <label htmlFor="nama-alternatif">Nama Alternatif</label>
-          <input
-            type="text"
-            id="nama-alternatif"
-            name="nama-alternatif"
-            className="dark:text-black px-2 py-1"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="mt-4 dark:bg-white dark:text-black p-2 inline-block my-8"
-        >
-          Simpan Alternatif
-        </button>
-      </form>
-    </>
+    <div className="p-4">
+      <div className="p-4 rounded shadow bg-gray-800">
+        <FormTambahAlternatif />
+      </div>
+    </div>
   );
 }

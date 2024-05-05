@@ -5,9 +5,83 @@ import prisma from "@/libs/database";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function getAllAlternatif() {
-  return await prisma.alternatif.findMany();
+export async function createAlternatif(formData: FormData) {
+  const nama = formData.get("nama") as string;
+  const NIK = formData.get("NIK") as string;
+  const nomor_KK = formData.get("nomor-KK") as string;
+  const alamat = formData.get("alamat") as string;
+  const pekerjaan = formData.get("pekerjaan") as string;
+
+  try {
+    await prisma.alternatif.create({
+      data: {
+        nama: nama,
+        nik: NIK,
+        nomor_kk: nomor_KK,
+        alamat: alamat,
+        pekerjaan: pekerjaan,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  revalidatePath("/dashboard/alternatif");
+  revalidatePath("/dashboard/hasil-perhitungan");
+
+  redirect("/dashboard/alternatif");
 }
+
+export async function getAllAlternatif() {
+  try {
+    return await prisma.alternatif.findMany();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getAlternatifById(id_alternatif: string) {
+  try {
+    return await prisma.alternatif.findUnique({
+      where: { id_alternatif: parseInt(id_alternatif) },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function updateAlternatif(
+  id_alternatif: string,
+  formData: FormData
+) {
+  const nama = formData.get("nama") as string;
+  const NIK = formData.get("NIK") as string;
+  const nomor_KK = formData.get("nomor-KK") as string;
+  const alamat = formData.get("alamat") as string;
+  const pekerjaan = formData.get("pekerjaan") as string;
+
+  try {
+    await prisma.alternatif.update({
+      where: { id_alternatif: parseInt(id_alternatif) },
+      data: {
+        nama: nama,
+        nik: NIK,
+        nomor_kk: nomor_KK,
+        alamat: alamat,
+        pekerjaan: pekerjaan,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  revalidatePath("/dashboard/alternatif");
+  revalidatePath("/dashboard/hasil-perhitungan");
+
+  redirect("/dashboard/alternatif");
+}
+
+// =============================================
 
 export async function getAllAlternatifOrderByRangkingAsc() {
   return await prisma.alternatif.findMany({
@@ -15,86 +89,58 @@ export async function getAllAlternatifOrderByRangkingAsc() {
   });
 }
 
-export async function updateAlternatifNilaiSimpleAdditiveWeighting(
+export async function updateNilaiSimpleAdditiveWeightingByIdAlternatif(
   id_alternatif: number,
-  sigma_nilai_saw: string
+  nilai_simple_additive_weighting: string
 ) {
-  await prisma.alternatif.update({
-    where: { id_alternatif: id_alternatif },
-    data: {
-      nilai_saw: parseFloat(sigma_nilai_saw),
-    },
-  });
-}
-
-export async function updateAlternatifRangking() {
-  const normalisasi_bobot = await prisma.alternatif.findMany({
-    orderBy: { nilai_saw: "desc" },
-  });
-
-  normalisasi_bobot.forEach(async (alternatif, index) => {
+  try {
     await prisma.alternatif.update({
-      where: { id_alternatif: alternatif.id_alternatif },
+      where: { id_alternatif: id_alternatif },
       data: {
-        rangking: index + 1,
+        nilai_simple_additive_weighting: parseFloat(
+          nilai_simple_additive_weighting
+        ),
       },
     });
-  });
-
-  revalidatePath("/dashboard/hasil-metode-saw");
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export async function getAlternatif(id: string) {
-  const id_alternatif = parseInt(id);
+export async function updateRangking() {
+  try {
+    const nilai_simple_additive_weighting = await prisma.alternatif.findMany({
+      orderBy: { nilai_simple_additive_weighting: "desc" },
+    });
 
-  return await prisma.alternatif.findUnique({
-    where: { id_alternatif: id_alternatif },
-  });
+    nilai_simple_additive_weighting.forEach(async (alternatif, index) => {
+      await prisma.alternatif.update({
+        where: { id_alternatif: alternatif.id_alternatif },
+        data: {
+          rangking: index + 1,
+        },
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  revalidatePath("/dashboard/hasil-perhitungan");
 }
 
-export async function createAlternatif(formData: FormData) {
-  const namaAlternatif = formData.get("nama-alternatif") as string;
+export async function deleteAlternatifById(id_alternatif: number) {
+  try {
+    await prisma.alternatif.delete({
+      where: { id_alternatif: id_alternatif },
+    });
 
-  await prisma.alternatif.create({
-    data: {
-      nama_alternatif: namaAlternatif,
-    },
-  });
+    await prisma.nilai.deleteMany({
+      where: { id_alternatif: id_alternatif },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
   revalidatePath("/dashboard/alternatif");
-
-  redirect("/dashboard/alternatif");
-}
-
-export async function updateAlternatif(id: string, formData: FormData) {
-  const id_alternatif = parseInt(id);
-  const namaAlternatif = formData.get("nama-alternatif") as string;
-
-  await prisma.alternatif.update({
-    where: {
-      id_alternatif: id_alternatif,
-    },
-    data: {
-      nama_alternatif: namaAlternatif,
-    },
-  });
-
-  revalidatePath("/dashboard/alternatif");
-
-  redirect("/dashboard/alternatif");
-}
-
-export async function deleteAlternatif(formData: FormData) {
-  const id_alternatif = parseInt(formData.get("id-alternatif") as string);
-
-  await prisma.alternatif.delete({
-    where: { id_alternatif: id_alternatif },
-  });
-
-  await prisma.nilai.deleteMany({
-    where: { id_alternatif: id_alternatif },
-  });
-
-  revalidatePath("/dashboard/alternatif");
-  revalidatePath("/dashboard/metode-saw");
+  revalidatePath("/dashboard/hasil-perhitungan");
 }

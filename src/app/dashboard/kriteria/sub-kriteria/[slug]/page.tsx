@@ -1,74 +1,45 @@
 import Link from "next/link";
-
-import { getAllSubKriteriaWithId } from "@/actions/sub-kriteria";
-import { getKriteria } from "@/actions/kriteria";
+import { getKriteriaById } from "@/actions/kriteria";
 
 import { SubKriteriaDeleteButtonForm } from "@/components/delete-button-form";
+import { TableSubKriteria } from "@/components/dashboard/kriteria/sub-kriteria/[slug]/table-sub-kriteria";
 
 export default async function DashboardKriteriaSubKriteriaPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const id_kriteria = params.slug;
-
-  const kriteria = await getKriteria(id_kriteria);
-  const allSubKriteria = await getAllSubKriteriaWithId(id_kriteria);
+  const kriteria = await getKriteriaById(params.slug);
 
   return (
-    <>
-      <div>
-        <Link href={`/dashboard/kriteria`} className="inline-block">
-          Sub Kriteria | {kriteria?.nama_kriteria}
-        </Link>
+    <div className="flex p-4 flex-col gap-4">
+      <div className="w-full xl:mb-0 mx-auto text-white">
+        <div className="relative flex flex-col min-w-0 break-words bg-gray-800 w-full rounded">
+          <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
+            <div className="flex flex-wrap items-center">
+              <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 className="font-medium text-base">
+                  List Sub Kriteria &gt;{" "}
+                  <Link href="/dashboard/kriteria">
+                    {kriteria?.nama_kriteria}
+                  </Link>
+                </h3>
+              </div>
+              <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                <Link
+                  href={`/dashboard/kriteria/sub-kriteria/tambah/${params.slug}`}
+                  className="inline-block rounded bg-emerald-500 px-3 py-1.5 text-base font-medium leading-6 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+                >
+                  Tambah Sub Kriteria
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="block w-full overflow-x-auto">
+            <TableSubKriteria id_kriteria={params.slug} />
+          </div>
+        </div>
       </div>
-      <Link
-        href={`/dashboard/kriteria/sub-kriteria/tambah/${id_kriteria}`}
-        className="mt-4 dark:bg-white dark:text-black p-2 inline-block my-8"
-      >
-        Tambah Sub Kriteria
-      </Link>
-      <table className="table-auto w-full border-collapse border-[1px] border-white">
-        <thead>
-          <tr className="text-left ">
-            <th className="border-[1px] border-white p-2.5">No</th>
-            <th className="border-[1px] border-white p-2.5">
-              Nama Sub Kriteria
-            </th>
-            <th className="border-[1px] border-white p-2.5">Nilai</th>
-            <th className="border-[1px] border-white p-2.5">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allSubKriteria.map((subKriteria, index) => {
-            return (
-              <>
-                <tr key={index}>
-                  <td className="border-[1px] border-white p-2">{index + 1}</td>
-                  <td className="border-[1px] border-white p-2">
-                    {subKriteria.nama_sub_kriteria}
-                  </td>
-                  <td className="border-[1px] border-white p-2">
-                    {subKriteria.nilai_sub_kriteria}
-                  </td>
-                  <td className="border-[1px] border-white p-2 ">
-                    <div className="flex justify-around items-center">
-                      <Link
-                        href={`/dashboard/kriteria/sub-kriteria/edit/${subKriteria.id_sub_kriteria}`}
-                      >
-                        Edit
-                      </Link>
-                      <SubKriteriaDeleteButtonForm
-                        id={subKriteria.id_sub_kriteria}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </table>
-    </>
+    </div>
   );
 }

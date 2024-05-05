@@ -13,7 +13,7 @@ export function Navbar({ isSidebarOpen, setIsSidebarOpen }: NavbarProps) {
   }
 
   return (
-    <nav className="bg-emerald-600 px-4 py-3 flex justify-between">
+    <nav className="bg-emerald-500 px-4 py-3 flex justify-between sticky top-0 w-full z-50">
       <div className="flex items-center text-xl">
         <FaBars
           className="text-white mr-4 cursor-pointer"
@@ -23,13 +23,13 @@ export function Navbar({ isSidebarOpen, setIsSidebarOpen }: NavbarProps) {
           Kantor Wali Nagari Saok Laweh
         </span>
       </div>
-      <div className="flex items-center gap-x-5">
+      <div className="flex items-center gap-x-5 z-99">
         <form
           action={signOutUser}
-          className="rounded hover:shadow hover:bg-emerald-500 py-1.5 px-3"
+          className="rounded hover:shadow hover:bg-emerald-600 py-1.5 px-3"
         >
           <div className="text-white">
-            <button className="flex items-center text-sm gap-x-1 font-medium">
+            <button className="flex items-center text-base gap-x-1 font-medium">
               <RiLogoutBoxRFill className="w-6 h-6" />
               Sign Out
             </button>

@@ -14,7 +14,7 @@ export function FormSignIn() {
       <div>
         <label
           htmlFor="username"
-          className="block text-sm font-medium leading-6 text-gray-900"
+          className="block text-sm font-medium leading-6 text-white"
         >
           Username
         </label>
@@ -23,8 +23,12 @@ export function FormSignIn() {
             id="username"
             name="username"
             type="text"
+            placeholder="Masukkan username"
             required
-            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+
+
+focus:ring-emerald-400 sm:text-sm sm:leading-6"
           />
         </div>
       </div>
@@ -32,7 +36,7 @@ export function FormSignIn() {
         <div className="flex items-center justify-between">
           <label
             htmlFor="password"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            className="block text-sm font-medium leading-6 text-white"
           >
             Password
           </label>
@@ -42,12 +46,15 @@ export function FormSignIn() {
             id="password"
             name="password"
             type="password"
+            placeholder="Masukkan password"
             required
-            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+
+
+focus:ring-emerald-400 sm:text-sm sm:leading-6"
           />
         </div>
       </div>
-
       <div>
         <ButtonSignIn />
       </div>

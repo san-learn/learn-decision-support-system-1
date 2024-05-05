@@ -1,55 +1,32 @@
 import Link from "next/link";
 
-import { getAllAlternatif } from "@/actions/alternatif";
-import { AlternatifDeleteButtonForm } from "@/components/delete-button-form";
+import { TableAlternatif } from "@/components/dashboard/alternatif/table-alternatif";
 
 export default async function DashboardAlternatifPage() {
-  const allAlternatif = await getAllAlternatif();
-
   return (
-    <>
-      <h1>Alternatif</h1>
-      <Link
-        href="/dashboard/alternatif/tambah"
-        className="mt-4 dark:bg-white dark:text-black p-2 inline-block my-8"
-      >
-        Tambah Alternatif
-      </Link>
-      <table className="table-auto w-full border-collapse border-[1px] border-white">
-        <thead>
-          <tr className="text-left ">
-            <th className="border-[1px] border-white p-2.5">No</th>
-            <th className="border-[1px] border-white p-2.5">Nama Alternatif</th>
-            <th className="border-[1px] border-white p-2.5">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allAlternatif.map((alternatif, index) => {
-            return (
-              <>
-                <tr key={index}>
-                  <td className="border-[1px] border-white p-2">{index + 1}</td>
-                  <td className="border-[1px] border-white p-2">
-                    {alternatif.nama_alternatif}
-                  </td>
-                  <td className="border-[1px] border-white p-2 ">
-                    <div className="flex justify-around items-center">
-                      <Link
-                        href={`/dashboard/alternatif/edit/${alternatif.id_alternatif}`}
-                      >
-                        Edit
-                      </Link>
-                      <AlternatifDeleteButtonForm
-                        id={alternatif.id_alternatif}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </table>
-    </>
+    <div className="flex p-4 flex-col gap-4">
+      <div className="w-full xl:mb-0 mx-auto text-white">
+        <div className="relative flex flex-col min-w-0 break-words bg-gray-800 w-full rounded">
+          <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
+            <div className="flex flex-wrap items-center">
+              <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 className="font-medium text-base">List Alternatif</h3>
+              </div>
+              <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                <Link
+                  href="/dashboard/alternatif/tambah"
+                  className="inline-block rounded bg-emerald-500 px-3 py-1.5 text-base font-medium leading-6 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+                >
+                  Tambah Alternatif
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="block w-full overflow-x-auto">
+            <TableAlternatif />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

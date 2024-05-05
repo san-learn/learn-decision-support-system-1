@@ -29,7 +29,7 @@ const navLinks = [
   },
   {
     name: "Hasil Perhitungan",
-    href: "/dashboard/hasil-metode-saw",
+    href: "/dashboard/hasil-perhitungan",
     icon: <AiFillCalculator className="inline-block w-6 h-6 mr-2 -mt-2" />,
   },
 ];
@@ -39,12 +39,12 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
 
   return (
     <div
-      className={`w-64 bg-emerald-600 fixed h-full py-2 px-4 ${
+      className={`w-64 bg-emerald-500 fixed h-full py-2 px-4 ${
         isSidebarOpen ? "block" : "hidden"
       }`}
     >
       <div className="mb-4 mt-2">
-        <h1 className="text-xl font-bold text-center text-white">
+        <h1 className="text-xl font-semibold text-center text-white">
           Admin Dashboard
         </h1>
       </div>
@@ -54,12 +54,12 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
           return (
             <li
               key={index}
-              className="mb-2 rounded hover:shadow hover:bg-emerald-500"
+              className="mb-2 rounded hover:shadow hover:bg-emerald-600 flex"
             >
               <Link
                 href={link.href}
                 className={`block px-3 w-full h-full py-2 rounded ${
-                  pathname === link.href ? "bg-emerald-500" : ""
+                  pathname.includes(link.href) && "bg-emerald-600"
                 }`}
               >
                 {link.icon}

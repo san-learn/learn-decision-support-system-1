@@ -5,73 +5,112 @@ import prisma from "@/libs/database";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function getAllSubKriteriaWithId(id: string) {
-  const id_kriteria = parseInt(id);
-
-  return await prisma.sub_Kriteria.findMany({
-    where: { id_kriteria: id_kriteria },
-    orderBy: { nilai_sub_kriteria: "desc" },
-  });
+export async function getAllSubKriteriaByIdKriteria(id_kriteria: string) {
+  try {
+    return await prisma.sub_Kriteria.findMany({
+      where: { id_kriteria: parseInt(id_kriteria) },
+      orderBy: { nilai_sub_kriteria: "desc" },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export async function getSubKriteria(id: string) {
-  const id_sub_kriteria = parseInt(id);
+export async function getAllSubKriteriaByIdAlternatif(id_alternatif: number) {
+  try {
+    const id_sub_kriteria = await prisma.nilai.findMany({
+      where: { id_alternatif: id_alternatif },
+      select: { id_sub_kriteria: true },
+    });
 
-  return await prisma.sub_Kriteria.findUnique({
-    where: { id_sub_kriteria: id_sub_kriteria },
-  });
+    const id_sub_kriteria_values = id_sub_kriteria.map((object) => {
+      return object.id_sub_kriteria;
+    });
+
+    return await prisma.sub_Kriteria.findMany({
+      where: { id_sub_kriteria: { in: id_sub_kriteria_values } },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getSubKriteriaById(id_sub_kriteria: string) {
+  try {
+    return await prisma.sub_Kriteria.findUnique({
+      where: { id_sub_kriteria: parseInt(id_sub_kriteria) },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function updateSubKriteria(
+  id_sub_kriteria: string,
   id_kriteria: number,
-  id: string,
   formData: FormData
 ) {
-  const id_sub_kriteria = parseInt(id);
-  const namaSubKriteria = formData.get("nama-sub-kriteria") as string;
-  const nilaiSubKriteria = formData.get("nilai-sub-kriteria") as string;
+  const nama_sub_kriteria = formData.get("nama-sub-kriteria") as string;
+  const nilai_sub_kriteria = formData.get("nilai-sub-kriteria") as string;
 
-  await prisma.sub_Kriteria.update({
-    where: {
-      id_sub_kriteria: id_sub_kriteria,
-    },
-    data: {
-      nama_sub_kriteria: namaSubKriteria,
-      nilai_sub_kriteria: parseInt(nilaiSubKriteria),
-    },
-  });
+  try {
+    await prisma.sub_Kriteria.update({
+      where: {
+        id_sub_kriteria: parseInt(id_sub_kriteria),
+      },
+      data: {
+        nama_sub_kriteria: nama_sub_kriteria,
+        nilai_sub_kriteria: parseInt(nilai_sub_kriteria),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
   revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
+  revalidatePath("/dashboard/hasil-perhitungan");
 
   redirect(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
 }
 
-export async function createSubKriteria(id: string, formData: FormData) {
-  const idKriteria = parseInt(id);
-  const namaSubKriteria = formData.get("nama-sub-kriteria") as string;
-  const nilaiSubKriteria = formData.get("nilai-sub-kriteria") as string;
+export async function createSubKriteria(
+  id_kriteria: string,
+  formData: FormData
+) {
+  const nama_sub_kriteria = formData.get("nama-sub-kriteria") as string;
+  const nilai_sub_kriteria = formData.get("nilai-sub-kriteria") as string;
 
-  await prisma.sub_Kriteria.create({
-    data: {
-      id_kriteria: idKriteria,
-      nama_sub_kriteria: namaSubKriteria,
-      nilai_sub_kriteria: parseInt(nilaiSubKriteria),
-    },
-  });
+  try {
+    await prisma.sub_Kriteria.create({
+      data: {
+        id_kriteria: parseInt(id_kriteria),
+        nama_sub_kriteria: nama_sub_kriteria,
+        nilai_sub_kriteria: parseInt(nilai_sub_kriteria),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
-  revalidatePath(`/dashboard/kriteria/sub-kriteria/${id}`);
+  revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
+  revalidatePath("/dashboard/hasil-perhitungan");
 
-  redirect(`/dashboard/kriteria/sub-kriteria/${id}`);
+  redirect(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
 }
 
-export async function deleteSubKriteria(formData: FormData) {
-  const id_sub_kriteria = parseInt(formData.get("id-sub-kriteria") as string);
+export async function deleteSubKriteriaById(
+  id_sub_kriteria: number,
+  id_kriteria: number
+) {
+  try {
+    await prisma.sub_Kriteria.delete({
+      where: {
+        id_sub_kriteria: id_sub_kriteria,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
-  await prisma.sub_Kriteria.delete({
-    where: {
-      id_sub_kriteria: id_sub_kriteria,
-    },
-  });
-
-  revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_sub_kriteria}`);
+  revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
 }

@@ -16,12 +16,16 @@ model User {
 }
 
 model Alternatif {
-  id_alternatif   Int      @id @default(autoincrement())
-  nama_alternatif String
-  nilai_saw       Float    @default(0)
-  rangking        Int      @default(0)
-  created_at      DateTime @default(now())
-  updated_at      DateTime @updatedAt
+  id_alternatif                   Int      @id @default(autoincrement())
+  nama                            String
+  nik                             String
+  nomor_kk                        String
+  alamat                          String
+  pekerjaan                       String
+  nilai_simple_additive_weighting Float    @default(0)
+  rangking                        Int      @default(0)
+  created_at                      DateTime @default(now())
+  updated_at                      DateTime @updatedAt
 }
 
 model Kriteria {
