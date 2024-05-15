@@ -1,7 +1,8 @@
 import { getAlternatifById } from "@/actions/alternatif";
 import { getAllKriteria } from "@/actions/kriteria";
 import { getAllNilaiByIdAlternatif, updateNilai } from "@/actions/nilai";
-import { OptionSubKriteria } from "../../tambah/[slug]/option-sub-kriteria";
+
+import { OptionSubKriteria } from "@/components/dashboard/nilai/tambah/[slug]/option-sub-kriteria";
 import { ButtonAction } from "@/components/button-action";
 
 export async function FormEditNilai({
@@ -20,7 +21,7 @@ export async function FormEditNilai({
       <div className="md:flex mb-6">
         <div className="md:w-1/3">
           <label
-            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
+            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4 text-sm md:text-base"
             htmlFor="nama"
           >
             Nama
@@ -28,7 +29,7 @@ export async function FormEditNilai({
         </div>
         <div className="md:w-2/3">
           <input
-            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 sm:text-sm sm:leading-6"
+            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 text-xs md:text-sm sm:leading-6"
             type="text"
             id="nama"
             name="nama"

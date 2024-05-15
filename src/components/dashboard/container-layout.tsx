@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { Dashboard } from "./dashboard";
-import { Sidebar } from "./sidebar";
+import { Dashboard } from "@/components/dashboard/dashboard";
+import { Sidebar } from "@/components/dashboard/sidebar";
 
 export function ContainerLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

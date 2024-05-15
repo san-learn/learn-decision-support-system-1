@@ -30,7 +30,7 @@ export function ButtonActionHapusKriteria({
       disabled={pending}
       onClick={handleClick}
     >
-      <MdDeleteForever className="w-5 h-5 text-red-400 group-hover:text-white" />
+      <MdDeleteForever className="w-4 h-4 md:w-5 md:h-5 text-red-400 group-hover:text-white" />
     </button>
   );
 }

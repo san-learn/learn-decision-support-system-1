@@ -8,7 +8,7 @@ export function FormTambahAlternatif() {
       <div className="md:flex mb-6">
         <div className="md:w-1/3">
           <label
-            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
+            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4 text-sm md:text-base"
             htmlFor="nama"
           >
             Nama
@@ -16,7 +16,7 @@ export function FormTambahAlternatif() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 sm:text-sm sm:leading-6"
+            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 text-xs md:text-sm sm:leading-6"
             type="text"
             id="nama"
             name="nama"
@@ -28,7 +28,7 @@ export function FormTambahAlternatif() {
       <div className="md:flex mb-6">
         <div className="md:w-1/3">
           <label
-            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
+            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4 text-sm md:text-base"
             htmlFor="NIK"
           >
             NIK
@@ -36,7 +36,7 @@ export function FormTambahAlternatif() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 sm:text-sm sm:leading-6"
+            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 text-xs md:text-sm sm:leading-6"
             type="text"
             id="NIK"
             name="NIK"
@@ -48,7 +48,7 @@ export function FormTambahAlternatif() {
       <div className="md:flex mb-6">
         <div className="md:w-1/3">
           <label
-            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
+            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4 text-sm md:text-base"
             htmlFor="nomor-KK"
           >
             Nomor KK
@@ -56,7 +56,7 @@ export function FormTambahAlternatif() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 sm:text-sm sm:leading-6"
+            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 text-xs md:text-sm sm:leading-6"
             type="text"
             id="nomor-KK"
             name="nomor-KK"
@@ -68,7 +68,7 @@ export function FormTambahAlternatif() {
       <div className="md:flex mb-6">
         <div className="md:w-1/3">
           <label
-            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
+            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4 text-sm md:text-base"
             htmlFor="alamat"
           >
             Alamat
@@ -76,7 +76,7 @@ export function FormTambahAlternatif() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 sm:text-sm sm:leading-6"
+            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 text-xs md:text-sm sm:leading-6"
             type="text"
             id="alamat"
             name="alamat"
@@ -88,7 +88,7 @@ export function FormTambahAlternatif() {
       <div className="md:flex mb-6">
         <div className="md:w-1/3">
           <label
-            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
+            className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4 text-sm md:text-base"
             htmlFor="pekerjaan"
           >
             Pekerjaan
@@ -96,7 +96,7 @@ export function FormTambahAlternatif() {
         </div>
         <div className="md:w-2/3">
           <input
-            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 sm:text-sm sm:leading-6"
+            className="block w-full rounded border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-400 text-xs md:text-sm sm:leading-6"
             type="text"
             id="pekerjaan"
             name="pekerjaan"

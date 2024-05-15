@@ -45,20 +45,25 @@ export async function getSubKriteriaById(id_sub_kriteria: string) {
   }
 }
 
-export async function updateSubKriteria(
-  id_sub_kriteria: string,
-  id_kriteria: number,
+export async function getCountAllSubKriteria() {
+  try {
+    return await prisma.sub_Kriteria.count();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createSubKriteria(
+  id_kriteria: string,
   formData: FormData
 ) {
   const nama_sub_kriteria = formData.get("nama-sub-kriteria") as string;
   const nilai_sub_kriteria = formData.get("nilai-sub-kriteria") as string;
 
   try {
-    await prisma.sub_Kriteria.update({
-      where: {
-        id_sub_kriteria: parseInt(id_sub_kriteria),
-      },
+    await prisma.sub_Kriteria.create({
       data: {
+        id_kriteria: parseInt(id_kriteria),
         nama_sub_kriteria: nama_sub_kriteria,
         nilai_sub_kriteria: parseInt(nilai_sub_kriteria),
       },
@@ -73,17 +78,20 @@ export async function updateSubKriteria(
   redirect(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
 }
 
-export async function createSubKriteria(
-  id_kriteria: string,
+export async function updateSubKriteria(
+  id_sub_kriteria: string,
+  id_kriteria: number,
   formData: FormData
 ) {
   const nama_sub_kriteria = formData.get("nama-sub-kriteria") as string;
   const nilai_sub_kriteria = formData.get("nilai-sub-kriteria") as string;
 
   try {
-    await prisma.sub_Kriteria.create({
+    await prisma.sub_Kriteria.update({
+      where: {
+        id_sub_kriteria: parseInt(id_sub_kriteria),
+      },
       data: {
-        id_kriteria: parseInt(id_kriteria),
         nama_sub_kriteria: nama_sub_kriteria,
         nilai_sub_kriteria: parseInt(nilai_sub_kriteria),
       },

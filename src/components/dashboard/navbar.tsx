@@ -1,4 +1,5 @@
 import { signOutUser } from "@/actions/user";
+
 import { FaBars } from "react-icons/fa";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
@@ -19,21 +20,18 @@ export function Navbar({ isSidebarOpen, setIsSidebarOpen }: NavbarProps) {
           className="text-white mr-4 cursor-pointer"
           onClick={handleClick}
         />
-        <span className="text-white text-lg font-semibold">
+        <span className="text-white text-base md:text-lg lg:text-xl font-semibold">
           Kantor Wali Nagari Saok Laweh
         </span>
       </div>
       <div className="flex items-center gap-x-5 z-99">
         <form
           action={signOutUser}
-          className="rounded hover:shadow hover:bg-emerald-600 py-1.5 px-3"
+          className="rounded shadow-sm hover:bg-emerald-600 text-white"
         >
-          <div className="text-white">
-            <button className="flex items-center text-base gap-x-1 font-medium">
-              <RiLogoutBoxRFill className="w-6 h-6" />
-              Sign Out
-            </button>
-          </div>
+          <button className="flex items-center text-base font-medium py-1 px-2">
+            <RiLogoutBoxRFill className="w-6 h-6" />
+          </button>
         </form>
       </div>
     </nav>

@@ -5,6 +5,38 @@ import prisma from "@/libs/database";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+export async function getAllAlternatif() {
+  try {
+    return await prisma.alternatif.findMany();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getAlternatifById(id_alternatif: string) {
+  try {
+    return await prisma.alternatif.findUnique({
+      where: { id_alternatif: parseInt(id_alternatif) },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getAllAlternatifOrderByRangkingAsc() {
+  return await prisma.alternatif.findMany({
+    orderBy: { rangking: "asc" },
+  });
+}
+
+export async function getCountAllAlternatif() {
+  try {
+    return await prisma.alternatif.count();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function createAlternatif(formData: FormData) {
   const nama = formData.get("nama") as string;
   const NIK = formData.get("NIK") as string;
@@ -30,24 +62,6 @@ export async function createAlternatif(formData: FormData) {
   revalidatePath("/dashboard/hasil-perhitungan");
 
   redirect("/dashboard/alternatif");
-}
-
-export async function getAllAlternatif() {
-  try {
-    return await prisma.alternatif.findMany();
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function getAlternatifById(id_alternatif: string) {
-  try {
-    return await prisma.alternatif.findUnique({
-      where: { id_alternatif: parseInt(id_alternatif) },
-    });
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 export async function updateAlternatif(
@@ -79,14 +93,6 @@ export async function updateAlternatif(
   revalidatePath("/dashboard/hasil-perhitungan");
 
   redirect("/dashboard/alternatif");
-}
-
-// =============================================
-
-export async function getAllAlternatifOrderByRangkingAsc() {
-  return await prisma.alternatif.findMany({
-    orderBy: { rangking: "asc" },
-  });
 }
 
 export async function updateNilaiSimpleAdditiveWeightingByIdAlternatif(

@@ -18,10 +18,8 @@ export async function TableDataNilaiSimpleAdditiveWeighting({
   await updateRangking();
 
   return (
-    <>
-      <td className="border-t-0 p-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap text-center">
-        {nilai_simple_additive_weighting}
-      </td>
-    </>
+    <td className="border align-middle text-sm whitespace-nowrap text-center">
+      {nilai_simple_additive_weighting}
+    </td>
   );
 }

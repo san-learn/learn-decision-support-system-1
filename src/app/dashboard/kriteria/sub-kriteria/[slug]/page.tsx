@@ -1,7 +1,7 @@
 import Link from "next/link";
+
 import { getKriteriaById } from "@/actions/kriteria";
 
-import { SubKriteriaDeleteButtonForm } from "@/components/delete-button-form";
 import { TableSubKriteria } from "@/components/dashboard/kriteria/sub-kriteria/[slug]/table-sub-kriteria";
 
 export default async function DashboardKriteriaSubKriteriaPage({
@@ -18,7 +18,7 @@ export default async function DashboardKriteriaSubKriteriaPage({
           <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3 className="font-medium text-base">
+                <h3 className="font-medium text-sm md:text-base">
                   List Sub Kriteria &gt;{" "}
                   <Link href="/dashboard/kriteria">
                     {kriteria?.nama_kriteria}
@@ -28,7 +28,7 @@ export default async function DashboardKriteriaSubKriteriaPage({
               <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                 <Link
                   href={`/dashboard/kriteria/sub-kriteria/tambah/${params.slug}`}
-                  className="inline-block rounded bg-emerald-500 px-3 py-1.5 text-base font-medium leading-6 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+                  className="inline-block rounded bg-emerald-500 px-3 py-1.5 text-sm md:text-base font-medium leading-6 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
                 >
                   Tambah Sub Kriteria
                 </Link>

@@ -21,7 +21,7 @@ export async function TableDataNilaiNormalisasiMatrik({
       : nilai_minimal?._min.nilai_sub_kriteria! / nilai_sub_kriteria;
 
   return (
-    <td className="border-t-0 p-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap text-center">
+    <td className="border p-4 align-middle text-sm whitespace-nowrap text-center">
       {nilaiNormalisasi.toFixed(2)}
     </td>
   );

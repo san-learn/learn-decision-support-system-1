@@ -1,5 +1,6 @@
 import { getAllSubKriteriaByIdAlternatif } from "@/actions/sub-kriteria";
-import { TableDataNilaiNormalisasiBobot } from "./table-data-nilai-normalisasi-bobot";
+
+import { TableDataNilaiNormalisasiBobot } from "@/components/dashboard/hasil-perhitungan/nilai-normalisasi-bobot/table-data-nilai-normalisasi-bobot";
 
 export async function ContainerNilaiNormalisasiBobot({
   id_alternatif,

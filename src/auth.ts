@@ -3,9 +3,9 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 
-import { authConfig } from "./auth.config";
+import { authConfig } from "@/auth.config";
 
-import { getUser } from "./actions/user";
+import { getUser } from "@/actions/user";
 
 import { User as UserModel } from "@prisma/client";
 

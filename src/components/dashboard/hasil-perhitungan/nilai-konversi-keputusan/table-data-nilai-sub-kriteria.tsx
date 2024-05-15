@@ -13,7 +13,9 @@ export async function TableDataNilaiSubKriteria({
         return (
           <td
             key={index}
-            className="border-t-0 p-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap text-center"
+            className={`border px-4 align-middle text-sm whitespace-nowrap text-center ${
+              index === all_sub_kriteria.length - 1 && "border-r-0 border-l-0"
+            }`}
           >
             {subKriteria.nilai_sub_kriteria}
           </td>

@@ -1,9 +1,11 @@
 "use server";
 
-import { signIn, signOut } from "@/auth";
-import { AuthError } from "next-auth";
-
 import prisma from "@/libs/database";
+
+import { signIn, signOut } from "@/auth";
+
+import bcrypt from "bcrypt";
+import { AuthError } from "next-auth";
 
 export async function getUser(username: string) {
   try {
@@ -17,6 +19,17 @@ export async function getUser(username: string) {
 
     throw new Error("Failed to fetch user.");
   }
+}
+
+export async function createAdminUser() {
+  const hashed_password = await bcrypt.hash("admin", 10);
+
+  await prisma.user.create({
+    data: {
+      username: "admin",
+      password: hashed_password,
+    },
+  });
 }
 
 export async function authenticate(

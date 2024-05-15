@@ -1,4 +1,4 @@
-import { Navbar } from "./navbar";
+import { Navbar } from "@/components/dashboard/navbar";
 
 interface DashboardProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export function Dashboard({
   setIsSidebarOpen,
 }: DashboardProps) {
   return (
-    <div className={`w-full ${isSidebarOpen && "ml-64"}`}>
+    <div className={`w-full ${isSidebarOpen && "ml-20 md:ml-64"}`}>
       <Navbar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}

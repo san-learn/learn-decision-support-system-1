@@ -14,7 +14,9 @@ export default async function DashboardMetodeSAWPage() {
             <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-medium text-base">Nilai Keputusan</h3>
+                  <h3 className="font-medium text-sm md:text-base">
+                    Nilai Keputusan
+                  </h3>
                 </div>
               </div>
             </div>
@@ -30,7 +32,7 @@ export default async function DashboardMetodeSAWPage() {
             <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-medium text-base">
+                  <h3 className="font-medium text-sm md:text-base">
                     Nilai Konversi Keputusan
                   </h3>
                 </div>
@@ -48,7 +50,7 @@ export default async function DashboardMetodeSAWPage() {
             <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-medium text-base">
+                  <h3 className="font-medium text-sm md:text-base">
                     Nilai Normalisasi Matrik
                   </h3>
                 </div>
@@ -66,7 +68,7 @@ export default async function DashboardMetodeSAWPage() {
             <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-medium text-base">
+                  <h3 className="font-medium text-sm md:text-base">
                     Nilai Normalisasi Bobot
                   </h3>
                 </div>
@@ -84,7 +86,9 @@ export default async function DashboardMetodeSAWPage() {
             <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-medium text-base">Perangkingan</h3>
+                  <h3 className="font-medium text-sm md:text-base">
+                    Perangkingan
+                  </h3>
                 </div>
               </div>
             </div>

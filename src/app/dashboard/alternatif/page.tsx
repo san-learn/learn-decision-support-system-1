@@ -10,12 +10,14 @@ export default async function DashboardAlternatifPage() {
           <div className="rounded-t mb-0 py-3 border-0 bg-gray-800">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3 className="font-medium text-base">List Alternatif</h3>
+                <h3 className="font-medium text-sm md:text-base">
+                  List Alternatif
+                </h3>
               </div>
               <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                 <Link
                   href="/dashboard/alternatif/tambah"
-                  className="inline-block rounded bg-emerald-500 px-3 py-1.5 text-base font-medium leading-6 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+                  className="inline-block rounded bg-emerald-500 px-3 py-1.5 text-sm md:text-base font-medium leading-6 text-white hover:bg-emerald-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
                 >
                   Tambah Alternatif
                 </Link>

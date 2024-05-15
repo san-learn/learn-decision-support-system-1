@@ -9,7 +9,7 @@ export async function TableDataNilaiSimpleAdditiveWeighting({
     await getNilaiSimpleAdditiveWeightingByIdAlternatif(id_alternatif);
 
   return (
-    <td className="border-t-0 p-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap text-center">
+    <td className="border p-4 align-middle border-r-0 border-l-0 text-sm whitespace-nowrap text-center">
       {nilai_simple_additive_weighting}
     </td>
   );

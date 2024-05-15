@@ -32,7 +32,7 @@ export async function TableDataNilaiNormalisasiBobot({
   );
 
   return (
-    <td className="border-t-0 p-4 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap text-center">
+    <td className="border p-4 align-middle text-sm whitespace-nowrap text-center">
       {perkalian_bobot}
     </td>
   );

@@ -5,6 +5,14 @@ import prisma from "@/libs/database";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+export async function getCountAllKriteria() {
+  try {
+    return await prisma.kriteria.count();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getAllKriteria() {
   try {
     return await prisma.kriteria.findMany();

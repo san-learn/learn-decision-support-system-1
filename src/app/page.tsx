@@ -1,29 +1,13 @@
-// import bycrypt from "bcrypt";
-
-// import prisma from "@/libs/database";
-import Link from "next/link";
+// import { createAdminUser } from "@/actions/user";
 
 export default function RootPage() {
-  // async function createUser() {
-  //   "use server";
+  // return (
+  //   <>
+  //     <form action={createAdminUser}>
+  //       <button type="submit">Create User</button>
+  //     </form>
+  //   </>
+  // );
 
-  //   const hashedPassword = bycrypt.hashSync("admin", 10);
-
-  //   await prisma.user.create({
-  //     data: {
-  //       username: "admin",
-  //       password: hashedPassword,
-  //     },
-  //   });
-  // }
-
-  return (
-    <>
-      <h1>RootPage</h1>
-      <Link href="/auth/sign-in">Sign In</Link>
-      {/* <form action={createUser}>
-        <button type="submit">Create User</button>
-      </form> */}
-    </>
-  );
+  return null;
 }

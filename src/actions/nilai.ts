@@ -5,6 +5,16 @@ import prisma from "@/libs/database";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+export async function getAllNilaiByIdAlternatif(id: string) {
+  try {
+    return await prisma.nilai.findMany({
+      where: { id_alternatif: parseInt(id) },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getNilaiSimpleAdditiveWeightingByIdAlternatif(
   id_alternatif: number
 ) {
@@ -18,23 +28,6 @@ export async function getNilaiSimpleAdditiveWeightingByIdAlternatif(
   } catch (error) {
     console.log(error);
   }
-}
-
-export async function updateNormalisasiBobotByIdAlternatifIdKriteria(
-  id_alternatif: number,
-  id_kriteria: number,
-  perkalian_bobot: string
-) {
-  try {
-    await prisma.nilai.updateMany({
-      where: { id_alternatif: id_alternatif, id_kriteria: id_kriteria },
-      data: { normalisasi_bobot: parseFloat(perkalian_bobot) },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-
-  revalidatePath("/dashboard/hasil-perhitungan");
 }
 
 export async function getNilaiMaximalByIdKriteria(id_kriteria: number) {
@@ -97,14 +90,21 @@ export async function createNilai(id_alternatif: string, formData: FormData) {
   redirect("/dashboard/nilai");
 }
 
-export async function getAllNilaiByIdAlternatif(id: string) {
+export async function updateNormalisasiBobotByIdAlternatifIdKriteria(
+  id_alternatif: number,
+  id_kriteria: number,
+  perkalian_bobot: string
+) {
   try {
-    return await prisma.nilai.findMany({
-      where: { id_alternatif: parseInt(id) },
+    await prisma.nilai.updateMany({
+      where: { id_alternatif: id_alternatif, id_kriteria: id_kriteria },
+      data: { normalisasi_bobot: parseFloat(perkalian_bobot) },
     });
   } catch (error) {
     console.log(error);
   }
+
+  revalidatePath("/dashboard/hasil-perhitungan");
 }
 
 export async function updateNilai(id_alternatif: string, formData: FormData) {

@@ -39,22 +39,22 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
 
   return (
     <div
-      className={`w-64 bg-emerald-500 fixed h-full py-2 px-4 ${
+      className={`w-20 md:w-64 bg-emerald-500 fixed h-full md:py-2 px-4 ${
         isSidebarOpen ? "block" : "hidden"
       }`}
     >
       <div className="mb-4 mt-2">
-        <h1 className="text-xl font-semibold text-center text-white">
+        <h1 className="hidden md:block text-lg lg:text-xl font-semibold text-center text-white">
           Admin Dashboard
         </h1>
       </div>
-      <hr />
+      <hr className="hidden md:block" />
       <ul className="mt-4 text-white font-medium">
         {navLinks.map((link, index) => {
           return (
             <li
               key={index}
-              className="mb-2 rounded hover:shadow hover:bg-emerald-600 flex"
+              className="mb-2 rounded hover:shadow hover:bg-emerald-600 flex itcems-center"
             >
               <Link
                 href={link.href}
@@ -63,7 +63,7 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
                 }`}
               >
                 {link.icon}
-                {link.name}
+                <p className="hidden md:inline-block">{link.name}</p>
               </Link>
             </li>
           );
