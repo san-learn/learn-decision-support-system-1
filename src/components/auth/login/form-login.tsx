@@ -2,13 +2,13 @@
 
 import { useFormState } from "react-dom";
 
-import { authenticate } from "@/actions/user";
+import { authenticate } from "@/actions/admin";
 
 import { ButtonAction } from "@/components/button-action";
 
 import { FiAlertOctagon } from "react-icons/fi";
 
-export function FormSignIn() {
+export function FormLogin() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
@@ -46,7 +46,7 @@ export function FormSignIn() {
         />
       </div>
       <div className="mt-6 mb-4">
-        <ButtonAction title="Sign In" />
+        <ButtonAction title="Login" />
       </div>
       {errorMessage && (
         <div className="flex items-center gap-2 justify-center ">

@@ -1,4 +1,4 @@
-import { signOutUser } from "@/actions/user";
+import { signOutUser } from "@/actions/admin";
 
 import { FaBars } from "react-icons/fa";
 import { RiLogoutBoxRFill } from "react-icons/ri";

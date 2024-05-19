@@ -7,9 +7,9 @@ import { signIn, signOut } from "@/auth";
 import bcrypt from "bcrypt";
 import { AuthError } from "next-auth";
 
-export async function getUser(username: string) {
+export async function getAdmin(username: string) {
   try {
-    const user = await prisma.user.findFirst({
+    const user = await prisma.admin.findFirst({
       where: { username: username },
     });
 
@@ -21,10 +21,10 @@ export async function getUser(username: string) {
   }
 }
 
-export async function createAdminUser() {
+export async function createAdmin() {
   const hashed_password = await bcrypt.hash("admin", 10);
 
-  await prisma.user.create({
+  await prisma.admin.create({
     data: {
       username: "admin",
       password: hashed_password,
