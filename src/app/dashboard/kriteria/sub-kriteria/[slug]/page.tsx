@@ -1,8 +1,15 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
 import { getKriteriaById } from "@/actions/kriteria";
 
 import { TableSubKriteria } from "@/components/dashboard/kriteria/sub-kriteria/[slug]/table-sub-kriteria";
+
+export const metadata: Metadata = {
+  title: "Sub Kriteria",
+  description:
+    "Halaman Sub Kriteria untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardKriteriaSubKriteriaPage({
   params,

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
+
 import { FormSignIn } from "@/components/auth/sign-in/form-sign-in";
+
+export const metadata: Metadata = {
+  title: "Sign In",
+  description:
+    "Halaman Sign In untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default function AuthenticationSignInPage() {
   return (

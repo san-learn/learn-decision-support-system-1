@@ -1,4 +1,12 @@
+import { Metadata } from "next";
+
 import { FormTambahSubKriteria } from "@/components/dashboard/kriteria/sub-kriteria/tambah/[slug]/form-tambah-sub-kriteria";
+
+export const metadata: Metadata = {
+  title: "Tambah Sub Kriteria",
+  description:
+    "Halaman Tambah Sub Kriteria untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default function DashboardKriteriaSubKriteriaTambahPage({
   params,

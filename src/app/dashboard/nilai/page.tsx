@@ -1,4 +1,12 @@
+import { Metadata } from "next";
+
 import { TableNilai } from "@/components/dashboard/nilai/table-nilai";
+
+export const metadata: Metadata = {
+  title: "Nilai",
+  description:
+    "Halaman Nilai untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardNilaiPage() {
   return (

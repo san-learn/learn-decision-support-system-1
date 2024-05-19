@@ -1,4 +1,12 @@
+import { Metadata } from "next";
+
 import { FormTambahNilai } from "@/components/dashboard/nilai/tambah/[slug]/form-tambah-nilai";
+
+export const metadata: Metadata = {
+  title: "Tambah Nilai",
+  description:
+    "Halaman Tambah Nilai untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardNilaiTambahPage({
   params,

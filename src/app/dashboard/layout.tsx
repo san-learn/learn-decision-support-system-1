@@ -1,5 +1,3 @@
-"use client";
-
 import { ContainerLayout } from "@/components/dashboard/container-layout";
 
 export default function DashboardLayout({

@@ -1,4 +1,12 @@
+import { Metadata } from "next";
+
 import { FormEditAlternatif } from "@/components/dashboard/alternatif/edit/[slug]/form-edit-alternatif";
+
+export const metadata: Metadata = {
+  title: "Edit Alternatif",
+  description:
+    "Halaman Edit Alternatif untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardAlternatifEditPage({
   params,

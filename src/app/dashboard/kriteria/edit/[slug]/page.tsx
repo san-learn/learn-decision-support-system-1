@@ -1,4 +1,12 @@
+import { Metadata } from "next";
+
 import { FormEditKriteria } from "@/components/dashboard/kriteria/edit/[slug]/form-edit-kriteria";
+
+export const metadata: Metadata = {
+  title: "Edit Kriteria",
+  description:
+    "Halaman Edit Kriteria untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardKriteriaEditPage({
   params,

@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
 import { TableKriteria } from "@/components/dashboard/kriteria/table-kriteria";
+
+export const metadata: Metadata = {
+  title: "Kriteria",
+  description:
+    "Halaman Kriteria untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardKriteriaPage() {
   return (

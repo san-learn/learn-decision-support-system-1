@@ -1,9 +1,16 @@
+import { Metadata } from "next";
+
 import { TableNilaiKeputusan } from "@/components/dashboard/hasil-perhitungan/nilai-keputusan/table-nilai-keputusan";
 import { TableNilaiKonversiKeputusan } from "@/components/dashboard/hasil-perhitungan/nilai-konversi-keputusan/table-nilai-konversi-keputusan";
 import { TableDataNilaiNormalisasiBobot } from "@/components/dashboard/hasil-perhitungan/nilai-normalisasi-bobot/table-nilai-normalisasi-bobot";
-
 import { TableNilaiNormalisasiMatrik } from "@/components/dashboard/hasil-perhitungan/nilai-normalisasi-matrik/table-nilai-normalisasi-matrik";
 import { TableNilaiPerangkingan } from "@/components/dashboard/hasil-perhitungan/perangkingan/table-nilai-perangkingan";
+
+export const metadata: Metadata = {
+  title: "Hasil Perhitungan",
+  description:
+    "Halaman Hasil Perhitungan untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardMetodeSAWPage() {
   return (

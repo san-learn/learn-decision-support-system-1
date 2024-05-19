@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
 import { TableAlternatif } from "@/components/dashboard/alternatif/table-alternatif";
+
+export const metadata: Metadata = {
+  title: "Alternatif",
+  description:
+    "Halaman Alternatif untuk Sistem Penunjang Keputusan dengan menggunakan metode Simple Additive Weighting.",
+};
 
 export default async function DashboardAlternatifPage() {
   return (
