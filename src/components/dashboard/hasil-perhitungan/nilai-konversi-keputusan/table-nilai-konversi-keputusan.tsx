@@ -9,6 +9,8 @@ export async function TableNilaiKonversiKeputusan() {
   const all_kriteria = await getAllKriteria();
   const all_alternatif = await getAllAlternatif();
 
+  console.log("2");
+
   return (
     <table className="items-center bg-transparent w-full border-collapse">
       <thead>

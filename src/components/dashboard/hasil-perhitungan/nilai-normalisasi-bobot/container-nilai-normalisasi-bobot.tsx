@@ -18,6 +18,7 @@ export async function ContainerNilaiNormalisasiBobot({
             nilai_sub_kriteria={subKriteria.nilai_sub_kriteria}
             id_kriteria={subKriteria.id_kriteria}
             id_alternatif={id_alternatif}
+            is_last_sub_kriteria={index === all_sub_kriteria.length - 1}
           />
         );
       })}

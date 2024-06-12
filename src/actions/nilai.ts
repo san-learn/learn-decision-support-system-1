@@ -1,8 +1,8 @@
 "use server";
 
 import prisma from "@/libs/database";
+import { revalidateAllPath } from "@/libs/utils";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function getAllNilaiByIdAlternatif(id: string) {
@@ -19,12 +19,29 @@ export async function getNilaiSimpleAdditiveWeightingByIdAlternatif(
   id_alternatif: number
 ) {
   try {
+    const data = await prisma.alternatif.findUnique({
+      where: { id_alternatif: id_alternatif },
+      select: {
+        nilai_simple_additive_weighting: true,
+      },
+    });
+
+    return data?.nilai_simple_additive_weighting?.toFixed(3);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getSumNilaiSimpleAdditiveWeightingByIdAlternatif(
+  id_alternatif: number
+) {
+  try {
     const data = await prisma.nilai.aggregate({
       where: { id_alternatif: { in: [id_alternatif] } },
       _sum: { normalisasi_bobot: true },
     });
 
-    return data._sum.normalisasi_bobot?.toFixed(2);
+    return data._sum.normalisasi_bobot?.toFixed(3);
   } catch (error) {
     console.log(error);
   }
@@ -85,7 +102,7 @@ export async function createNilai(id_alternatif: string, formData: FormData) {
     });
   }
 
-  revalidatePath("/dashboard/nilai");
+  revalidateAllPath();
 
   redirect("/dashboard/nilai");
 }
@@ -104,7 +121,7 @@ export async function updateNormalisasiBobotByIdAlternatifIdKriteria(
     console.log(error);
   }
 
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 }
 
 export async function updateNilai(id_alternatif: string, formData: FormData) {
@@ -126,8 +143,7 @@ export async function updateNilai(id_alternatif: string, formData: FormData) {
     });
   }
 
-  revalidatePath("/dashboard/nilai");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect("/dashboard/nilai");
 }
@@ -141,6 +157,5 @@ export async function deleteNilaiByIdAlternatif(id_alternatif: number) {
     console.log(error);
   }
 
-  revalidatePath("/dashboard/nilai");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 }

@@ -23,9 +23,7 @@ export async function TableNilai() {
                 key={index}
                 className="px-4 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-sm border-l-0 border-r-0 whitespace-nowrap font-medium text-wrap"
               >
-                {`${kriteria.nama_kriteria.split(" ")[0]} ${
-                  kriteria.nama_kriteria.split(" ")[1]
-                } ...`}
+                {kriteria.nama_kriteria}
               </th>
             );
           })}

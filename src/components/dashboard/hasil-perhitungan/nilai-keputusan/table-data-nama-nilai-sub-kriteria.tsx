@@ -17,7 +17,7 @@ export async function TabelDataNamaNilaiSubKriteria({
               index === all_sub_kriteria.length - 1 && "border-r-0 border-l-0"
             }`}
           >
-            {sub_kriteria.nilai_sub_kriteria} - {sub_kriteria.nama_sub_kriteria}
+            {sub_kriteria.nama_sub_kriteria}
           </td>
         );
       })}

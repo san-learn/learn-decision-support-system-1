@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/libs/database";
+import { revalidateAllPath } from "@/libs/utils";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -29,6 +30,7 @@ export async function getAllSubKriteriaByIdAlternatif(id_alternatif: number) {
 
     return await prisma.sub_Kriteria.findMany({
       where: { id_sub_kriteria: { in: id_sub_kriteria_values } },
+      orderBy: { id_kriteria: "asc" },
     });
   } catch (error) {
     console.log(error);
@@ -73,7 +75,7 @@ export async function createSubKriteria(
   }
 
   revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
 }
@@ -101,7 +103,7 @@ export async function updateSubKriteria(
   }
 
   revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
 }
@@ -121,4 +123,5 @@ export async function deleteSubKriteriaById(
   }
 
   revalidatePath(`/dashboard/kriteria/sub-kriteria/${id_kriteria}`);
+  revalidateAllPath();
 }

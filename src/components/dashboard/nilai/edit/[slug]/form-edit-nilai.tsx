@@ -40,8 +40,8 @@ export async function FormEditNilai({
       </div>
       {all_kriteria?.map((kriteria, index) => {
         return (
-          <>
-            <div key={index} className="md:flex mb-6">
+          <div key={index}>
+            <div className="md:flex mb-6">
               <div className="md:w-1/3">
                 <label
                   className="block text-white font-medium md:text-left mb-3 md:mb-0 pr-4"
@@ -61,7 +61,7 @@ export async function FormEditNilai({
                 </select>
               </div>
             </div>
-          </>
+          </div>
         );
       })}
       <div className="md:flex md:items-center">

@@ -20,9 +20,6 @@ export async function TableAlternatif() {
             Nama
           </th>
           <th className="px-4 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs md:text-sm border-l-0 border-r-0 whitespace-nowrap font-medium text-left">
-            NIK
-          </th>
-          <th className="px-4 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs md:text-sm border-l-0 border-r-0 whitespace-nowrap font-medium text-left">
             Nomor KK
           </th>
           <th className="px-4 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs md:text-sm border-l-0 border-r-0 whitespace-nowrap font-medium text-left">
@@ -45,9 +42,6 @@ export async function TableAlternatif() {
               </td>
               <td className="border px-4 align-middle text-xs md:text-sm whitespace-nowrap">
                 {alternatif.nama}
-              </td>
-              <td className="border px-4 align-middle text-xs md:text-sm whitespace-nowrap">
-                {alternatif.nik}
               </td>
               <td className="border px-4 align-middle text-xs md:text-sm whitespace-nowrap">
                 {alternatif.nomor_kk}

@@ -22,7 +22,7 @@ export async function TableDataNilaiNormalisasiMatrik({
 
   return (
     <td className="border p-4 align-middle text-sm whitespace-nowrap text-center">
-      {nilaiNormalisasi.toFixed(2)}
+      {nilaiNormalisasi.toFixed(3)}
     </td>
   );
 }

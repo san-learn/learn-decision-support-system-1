@@ -30,7 +30,7 @@ export default function AuthenticationLoginPage() {
         </div>
       </div>
     </div>
-    // <form action={createAdmin}>
+    //  <form action={createAdmin}>
     //   <button type="submit">Create Admin</button>
     // </form>
   );

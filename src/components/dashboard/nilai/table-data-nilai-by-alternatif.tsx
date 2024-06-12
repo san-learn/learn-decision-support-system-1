@@ -21,7 +21,7 @@ export async function TableDataNilaiByAlternatif({
             key={index}
             className="border px-4 align-middle text-sm whitespace-nowrap text-center"
           >
-            {`${sub_kriteria.nama_sub_kriteria} - (${sub_kriteria.nilai_sub_kriteria})`}
+            {sub_kriteria.nama_sub_kriteria}
           </td>
         );
       })}

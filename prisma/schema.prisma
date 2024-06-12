@@ -9,30 +9,29 @@ datasource db {
 
 model Admin {
   id_admin   Int      @id @default(autoincrement())
-  username   String
-  password   String
+  username   String   @db.VarChar(30)
+  password   String   @db.VarChar(100)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Alternatif {
   id_alternatif                   Int      @id @default(autoincrement())
-  nama                            String
-  nik                             String
-  nomor_kk                        String
-  alamat                          String
-  pekerjaan                       String
-  nilai_simple_additive_weighting Float    @default(0)
-  rangking                        Int      @default(0)
+  nama                            String   @db.VarChar(30)
+  nomor_kk                        String   @db.VarChar(30)
+  alamat                          String   @db.VarChar(30)
+  pekerjaan                       String   @db.VarChar(30)
+  nilai_simple_additive_weighting Float?
+  rangking                        Int?
   created_at                      DateTime @default(now())
   updated_at                      DateTime @updatedAt
 }
 
 model Kriteria {
   id_kriteria    Int      @id @default(autoincrement())
-  nama_kriteria  String
+  nama_kriteria  String   @db.VarChar(30)
   bobot_kriteria Float
-  tipe_kriteria  String
+  tipe_kriteria  String   @db.VarChar(30)
   created_at     DateTime @default(now())
   updated_at     DateTime @updatedAt
 }
@@ -40,8 +39,8 @@ model Kriteria {
 model Sub_Kriteria {
   id_sub_kriteria    Int      @id @default(autoincrement())
   id_kriteria        Int
-  nama_sub_kriteria  String
-  nilai_sub_kriteria Int      @default(0)
+  nama_sub_kriteria  String   @db.VarChar(30)
+  nilai_sub_kriteria Int
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt
 }
@@ -51,7 +50,7 @@ model Nilai {
   id_alternatif     Int
   id_kriteria       Int
   id_sub_kriteria   Int
-  normalisasi_bobot Float    @default(0)
+  normalisasi_bobot Float?
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
 }

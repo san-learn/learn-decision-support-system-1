@@ -1,13 +1,13 @@
 "use server";
 
 import prisma from "@/libs/database";
+import { revalidateAllPath } from "@/libs/utils";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function getAllAlternatif() {
   try {
-    return await prisma.alternatif.findMany();
+    return await prisma.alternatif.findMany({});
   } catch (error) {
     console.log(error);
   }
@@ -39,7 +39,6 @@ export async function getCountAllAlternatif() {
 
 export async function createAlternatif(formData: FormData) {
   const nama = formData.get("nama") as string;
-  const NIK = formData.get("NIK") as string;
   const nomor_KK = formData.get("nomor-KK") as string;
   const alamat = formData.get("alamat") as string;
   const pekerjaan = formData.get("pekerjaan") as string;
@@ -48,7 +47,6 @@ export async function createAlternatif(formData: FormData) {
     await prisma.alternatif.create({
       data: {
         nama: nama,
-        nik: NIK,
         nomor_kk: nomor_KK,
         alamat: alamat,
         pekerjaan: pekerjaan,
@@ -58,8 +56,7 @@ export async function createAlternatif(formData: FormData) {
     console.log(error);
   }
 
-  revalidatePath("/dashboard/alternatif");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect("/dashboard/alternatif");
 }
@@ -79,7 +76,6 @@ export async function updateAlternatif(
       where: { id_alternatif: parseInt(id_alternatif) },
       data: {
         nama: nama,
-        nik: NIK,
         nomor_kk: nomor_KK,
         alamat: alamat,
         pekerjaan: pekerjaan,
@@ -89,8 +85,7 @@ export async function updateAlternatif(
     console.log(error);
   }
 
-  revalidatePath("/dashboard/alternatif");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect("/dashboard/alternatif");
 }
@@ -111,6 +106,8 @@ export async function updateNilaiSimpleAdditiveWeightingByIdAlternatif(
   } catch (error) {
     console.log(error);
   }
+
+  revalidateAllPath();
 }
 
 export async function updateRangking() {
@@ -131,7 +128,7 @@ export async function updateRangking() {
     console.log(error);
   }
 
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 }
 
 export async function deleteAlternatifById(id_alternatif: number) {
@@ -147,6 +144,5 @@ export async function deleteAlternatifById(id_alternatif: number) {
     console.log(error);
   }
 
-  revalidatePath("/dashboard/alternatif");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 }

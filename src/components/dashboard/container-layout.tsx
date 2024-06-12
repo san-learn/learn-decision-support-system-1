@@ -6,7 +6,7 @@ import { Dashboard } from "@/components/dashboard/dashboard";
 import { Sidebar } from "@/components/dashboard/sidebar";
 
 export function ContainerLayout({ children }: { children: React.ReactNode }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
     <div className="flex">

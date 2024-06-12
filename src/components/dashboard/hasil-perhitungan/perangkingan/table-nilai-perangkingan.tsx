@@ -5,6 +5,8 @@ import { TableDataNilaiSimpleAdditiveWeighting } from "@/components/dashboard/ha
 export async function TableNilaiPerangkingan() {
   const allAlternatif = await getAllAlternatifOrderByRangkingAsc();
 
+  console.log("5");
+
   return (
     <table className="items-center bg-transparent w-full border-collapse">
       <thead>
@@ -24,7 +26,7 @@ export async function TableNilaiPerangkingan() {
         </tr>
       </thead>
       <tbody>
-        {allAlternatif.map((alternatif, index) => {
+        {allAlternatif?.map((alternatif, index) => {
           return (
             <tr key={index}>
               <td className="border p-4 border-r-0 border-l-0 align-middle text-sm whitespace-nowrap">

@@ -1,8 +1,8 @@
 "use server";
 
 import prisma from "@/libs/database";
+import { revalidateAllPath } from "@/libs/utils";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function getCountAllKriteria() {
@@ -48,8 +48,7 @@ export async function createKriteria(formData: FormData) {
     console.log(error);
   }
 
-  revalidatePath("/dashboard/kriteria");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect("/dashboard/kriteria");
 }
@@ -74,9 +73,7 @@ export async function updateKriteria(id_kriteria: string, formData: FormData) {
     console.log(error);
   }
 
-  revalidatePath("/dashboard/kriteria");
-  revalidatePath("/dashboard/sub-kriteria");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 
   redirect("/dashboard/kriteria");
 }
@@ -94,7 +91,5 @@ export async function deleteKriteriaById(id_kriteria: number) {
     where: { id_kriteria: id_kriteria },
   });
 
-  revalidatePath("/dashboard/kriteria");
-  revalidatePath("/dashboard/sub-kriteria");
-  revalidatePath("/dashboard/hasil-perhitungan");
+  revalidateAllPath();
 }

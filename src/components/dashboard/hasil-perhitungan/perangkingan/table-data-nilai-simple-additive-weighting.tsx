@@ -1,7 +1,4 @@
-import {
-  updateNilaiSimpleAdditiveWeightingByIdAlternatif,
-  updateRangking,
-} from "@/actions/alternatif";
+import { updateRangking } from "@/actions/alternatif";
 import { getNilaiSimpleAdditiveWeightingByIdAlternatif } from "@/actions/nilai";
 
 export async function TableDataNilaiSimpleAdditiveWeighting({
@@ -11,10 +8,6 @@ export async function TableDataNilaiSimpleAdditiveWeighting({
 }) {
   const nilai_simple_additive_weighting =
     await getNilaiSimpleAdditiveWeightingByIdAlternatif(id_alternatif);
-  await updateNilaiSimpleAdditiveWeightingByIdAlternatif(
-    id_alternatif,
-    nilai_simple_additive_weighting!
-  );
   await updateRangking();
 
   return (
