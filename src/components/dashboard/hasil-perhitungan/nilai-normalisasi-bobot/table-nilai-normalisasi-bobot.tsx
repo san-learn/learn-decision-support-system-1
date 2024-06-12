@@ -7,8 +7,6 @@ export async function TableDataNilaiNormalisasiBobot() {
   const all_kriteria = await getAllKriteria();
   const all_alternatif = await getAllAlternatif();
 
-  console.log("4");
-
   return (
     <table className="items-center bg-transparent w-full border-collapse">
       <thead>

@@ -5,8 +5,6 @@ import { TableDataNilaiSimpleAdditiveWeighting } from "@/components/dashboard/ha
 export async function TableNilaiPerangkingan() {
   const allAlternatif = await getAllAlternatifOrderByRangkingAsc();
 
-  console.log("5");
-
   return (
     <table className="items-center bg-transparent w-full border-collapse">
       <thead>

@@ -7,8 +7,6 @@ export async function TableNilaiNormalisasiMatrik() {
   const all_kriteria = await getAllKriteria();
   const all_alternatif = await getAllAlternatif();
 
-  console.log("3");
-
   return (
     <table className="items-center bg-transparent w-full border-collapse">
       <thead>
