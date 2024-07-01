@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { AiFillCalculator } from "react-icons/ai";
+import { AiFillCalculator, AiFillPrinter } from "react-icons/ai";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { FaClipboardList, FaHome } from "react-icons/fa";
 import { MdInsertChart } from "react-icons/md";
@@ -31,6 +31,11 @@ const navLinks = [
     name: "Hasil Perhitungan",
     href: "/dashboard/hasil-perhitungan",
     icon: <AiFillCalculator className="inline-block w-6 h-6 mr-2 -mt-2" />,
+  },
+  {
+    name: "Laporan",
+    href: "/dashboard/laporan",
+    icon: <AiFillPrinter className="inline-block w-6 h-6 mr-2 -mt-2" />,
   },
 ];
 
